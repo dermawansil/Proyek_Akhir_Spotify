@@ -5,7 +5,7 @@
   
   .playlist {
     width: 15em;
-    border: 1px solid black;
+    border: 1px solid rgb(12, 182, 20);
     padding: 0.5em;
     margin: 1em;
   }

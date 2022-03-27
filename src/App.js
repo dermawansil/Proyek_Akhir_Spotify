@@ -1,9 +1,10 @@
 import './App.css';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import data from './data/data.';
+import data from './data';
 import './style.css';
 import { Playlist } from './components/Playlist';
+
 
 console.log(data);
 
@@ -25,9 +26,21 @@ function App() {
         <div className="App">
             {/* {url, title, artist, album} */}
             <div className='playlists'>
-                <Playlist url={data.album.images[0].url} title={data.name} artist={data.artists[0].name} album={data.album.name} />
-                <Playlist url={data.album.images[1].url} title={data.name} artist={data.artists[0].name} album={data.album.name} />
-                <Playlist url={data.album.images[0].url} title={data.name} artist={data.artists[0].name} album={data.album.name} />
+                {/* <Playlist url={data.album.images[0].url} title={data.name} artist={data.artists[0].name} album={data.album.name} /> */}
+                {
+                    data.map(item => {
+                        return(
+                        
+                                <Playlist 
+                                    key={item.id} 
+                                    url={item.album.images[0].url} 
+                                    title={item.name} 
+                                    artist={item.artists[0].name} 
+                                    album={item.album.name} />
+                                 
+                        )
+                    }) 
+                }
                 
             </div>
         </div>
