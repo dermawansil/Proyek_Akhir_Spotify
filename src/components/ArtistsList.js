@@ -2,32 +2,33 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import _ from 'lodash';
 import music from '../images/music.jpeg';
-const PlayList = ({ playlist }) => {
+const ArtistsList = ({ artists }) => {
   return (
-    <div>
-      {Object.keys(playlist).length > 0 && (
-        <div className="playlist">
-          {playlist.items.map((item, index) => {
+    <React.Fragment>
+      {Object.keys(artists).length > 0 && (
+        <div className="artists">
+          {artists.items.map((artist, index) => {
             return (
               <React.Fragment key={index}>
                 <Card style={{ width: '18rem' }}>
                   <a
                     target="_blank"
-                    href={item.external_urls.spotify}
+                    href={artist.external_urls.spotify}
                     rel="noopener noreferrer"
                     className="card-image-link"
                   >
-                    {!_.isEmpty(item.images) ? (
-                      <Card.Img variant="top" src={item.images[0].url} alt="" />
+                    {!_.isEmpty(artist.images) ? (
+                      <Card.Img
+                        variant="top"
+                        src={artist.images[0].url}
+                        alt=""
+                      />
                     ) : (
                       <img src={music} alt="" />
                     )}
                   </a>
                   <Card.Body>
-                    <Card.Title>{item.name}</Card.Title>
-                    <Card.Text>
-                      <small>By {item.owner.display_name}</small>
-                    </Card.Text>
+                    <Card.Title>{artist.name}</Card.Title>
                   </Card.Body>
                 </Card>
               </React.Fragment>
@@ -35,7 +36,7 @@ const PlayList = ({ playlist }) => {
           })}
         </div>
       )}
-    </div>
+    </React.Fragment>
   );
 };
-export default PlayList;
+export default ArtistsList;

@@ -2,31 +2,37 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import _ from 'lodash';
 import music from '../images/music.jpeg';
-const PlayList = ({ playlist }) => {
+const AlbumsList = ({ albums }) => {
   return (
-    <div>
-      {Object.keys(playlist).length > 0 && (
-        <div className="playlist">
-          {playlist.items.map((item, index) => {
+    <React.Fragment>
+      {Object.keys(albums).length > 0 && (
+        <div className="albums">
+          {albums.items.map((album, index) => {
             return (
               <React.Fragment key={index}>
                 <Card style={{ width: '18rem' }}>
                   <a
                     target="_blank"
-                    href={item.external_urls.spotify}
+                    href={album.external_urls.spotify}
                     rel="noopener noreferrer"
                     className="card-image-link"
                   >
-                    {!_.isEmpty(item.images) ? (
-                      <Card.Img variant="top" src={item.images[0].url} alt="" />
+                    {!_.isEmpty(album.images) ? (
+                      <Card.Img
+                        variant="top"
+                        src={album.images[0].url}
+                        alt=""
+                      />
                     ) : (
                       <img src={music} alt="" />
                     )}
                   </a>
                   <Card.Body>
-                    <Card.Title>{item.name}</Card.Title>
+                    <Card.Title>{album.name}</Card.Title>
                     <Card.Text>
-                      <small>By {item.owner.display_name}</small>
+                      <small>
+                        {album.artists.map((artist) => artist.name).join(', ')}
+                      </small>
                     </Card.Text>
                   </Card.Body>
                 </Card>
@@ -35,7 +41,7 @@ const PlayList = ({ playlist }) => {
           })}
         </div>
       )}
-    </div>
+    </React.Fragment>
   );
 };
-export default PlayList;
+export default AlbumsList;
