@@ -1,4 +1,4 @@
-const Playlist = ({ handleAddPlaylistOnChange, handleAddPlaylistOnSubmit, addPlaylistData, playlistID, selectedTracks }) => {
+const Playlist = ({ handleAddPlaylistOnChange, handleAddPlaylistOnSubmit, addPlaylistData }) => {
     return (
         <div className="playlist-form">
             <h2>Create Playlist</h2>
