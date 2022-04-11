@@ -120,8 +120,8 @@ const MakePlaylist = () => {
                 onChange={handleSearchOnChange} />
             <br />
             <div className="grid-container">
-                {mergedTracks !== undefined && ( // if merged tracks exist
-                    <Tracks // render tracks
+                {mergedTracks !== undefined && ( 
+                    <Tracks
                         mergedTracks={mergedTracks}
                         handleSelectTrack={handleSelectTrack} key={mergedTracks.uri} />
                 )}
