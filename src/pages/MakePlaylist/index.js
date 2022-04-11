@@ -7,15 +7,15 @@ import Playlist from '../../components/Playlist';
 import Profile from '../Profile';
 
 const MakePlaylist = () => {
-    const [tracksData, setTracksData] = useState([]); // tracks data
-    const [query, setQuery] = useState(""); 
-    const [selectedTracks, setSelectedTracks] = useState([]); // tracks that are selected
-    const [mergedTracks, setMergedTracks] = useState([]); 
-    const accessToken = useSelector((state) => state.accessToken.value); // get access token from redux store
-    const user_id = useSelector ((state) => state.user.value.user_id);
+    const [tracksData, setTracksData] = useState([]); 
+    const [query, setQuery] = useState("");
+    const [selectedTracks, setSelectedTracks] = useState([]); 
+    const [mergedTracks, setMergedTracks] = useState([]);
+    const accessToken = useSelector((state) => state.accessToken.value); 
+    const user_id = useSelector((state) => state.user.value.user_id); 
 
     useEffect(() => {
-        const mergedTracksWithSelectedTracks // tracks with selected tracks
+        const mergedTracksWithSelectedTracks 
             = tracksData.map((track) => ({
                 ...track,
                 isSelected: !!selectedTracks.find((selectedTrack) => selectedTrack === track.uri), // if track is selected, set isSelected to true
@@ -27,12 +27,12 @@ const MakePlaylist = () => {
     const handleSelectTrack = (uri) => {
         const alreadySelected = selectedTracks.find(selectedTrack => selectedTrack === uri) // if track is already selected
         if (alreadySelected) {
-            setSelectedTracks(selectedTracks.filter(selectedTrack => selectedTrack !== uri)) // remove track from selected tracks
+            setSelectedTracks(selectedTracks.filter(selectedTrack => selectedTrack !== uri)); // remove track from selected tracks
         }
         else {
-            setSelectedTracks((selectedTracks) => [...selectedTracks, uri]) // add track to selected tracks
+            setSelectedTracks((selectedTracks) => [...selectedTracks, uri]); // add track to selected tracks
         }
-        console.log(selectedTracks)
+        console.log(selectedTracks);
     };
 
     const handleGetTracksData = async () => {
@@ -47,11 +47,11 @@ const MakePlaylist = () => {
     }
 
     const handleSearchOnChange = (e) => {
-        setQuery(e.target.value) // set query in state
+        setQuery(e.target.value); // set query in state
     }
 
     const handleSearchOnSubmit = (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
         handleGetTracksData();
     }
 
@@ -60,7 +60,7 @@ const MakePlaylist = () => {
         description: '',
     })
 
-    const bodyParams = {
+    const bodyParams = { 
         name: addPlaylistData.title,
         description: addPlaylistData.description,
         collaborative: false,
@@ -73,21 +73,11 @@ const MakePlaylist = () => {
 
     const handleAddPlaylistOnChange = e => {
         const { name, value } = e.target;
-        setAddPlaylistData({ ...addPlaylistData, [name]: value }) // set playlist data in state
-    }
-
-    const fetchUserID = async () => {
-        const data = await axios //get user id
-            .get(
-                `https://api.spotify.com/v1/me?access_token=${accessToken}`
-            )
-            .catch((error) => error)
-        return data.data.id; //return user id
+        setAddPlaylistData({ ...addPlaylistData, [name]: value }); // set playlist data in state
     }
 
     const handleAddPlaylistOnSubmit = async (e) => {
         e.preventDefault();
-        const user_id = await fetchUserID();
         const data = await axios //create playlist
             .post(
                 `https://api.spotify.com/v1/users/${user_id}/playlists`, bodyParams,
@@ -96,12 +86,13 @@ const MakePlaylist = () => {
                 }
             )
             .catch((error) => error)
-        handleAddItemToPlaylist(data.data.id) 
+        console.log("Playlist created: ", data);
+        handleAddItemToPlaylist(data.data.id);
     }
 
     //add Item to Playlist Things
-    const itemParams = {
-        uris: selectedTracks // uris of selected tracks
+    const itemParams = { // item params for add item to playlist
+        uris: selectedTracks
     }
 
     const handleAddItemToPlaylist = async (playlist_id) => {
@@ -112,14 +103,14 @@ const MakePlaylist = () => {
                     headers: header
                 }
             )
-            .catch((error) => error)
-        console.log(data);
+            .catch((error) => error);
+        console.log("Items added to playlist: ", data);
     }
 
     return (
         <>
-            {/* <Profile /> */}
             <h1>Spotify</h1>
+            <Profile />
             <Playlist
                 handleAddPlaylistOnChange={handleAddPlaylistOnChange}
                 handleAddPlaylistOnSubmit={handleAddPlaylistOnSubmit}
@@ -128,10 +119,10 @@ const MakePlaylist = () => {
                 onSubmit={handleSearchOnSubmit}
                 onChange={handleSearchOnChange} />
             <br />
-            <div className="grid-container"> 
+            <div className="grid-container">
                 {mergedTracks !== undefined && ( // if merged tracks exist
                     <Tracks // render tracks
-                        mergedTracks={mergedTracks} 
+                        mergedTracks={mergedTracks}
                         handleSelectTrack={handleSelectTrack} key={mergedTracks.uri} />
                 )}
             </div>
