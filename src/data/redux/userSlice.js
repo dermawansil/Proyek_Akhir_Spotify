@@ -5,7 +5,8 @@ export const userSlice = createSlice({
     initialState: {
         value: {
             displayName: undefined,
-            user_id: undefined
+            user_id: undefined,
+            imgSrc:undefined
         }
     },
     reducers: {
@@ -14,10 +15,13 @@ export const userSlice = createSlice({
         },
         userDisplayName: (state, action) => {
             state.value.displayName = action.payload;
+        },
+        imgSrc:(state,action) => {
+            state.value.imgSrc = action.payload;
         }
     }
 })
 
-export const { user_id, userDisplayName } = userSlice.actions;
+export const { user_id, userDisplayName,imgSrc }  = userSlice.actions;
 
 export default userSlice.reducer;

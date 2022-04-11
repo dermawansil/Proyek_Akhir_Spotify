@@ -3,7 +3,7 @@ const SearchBar = ({ onSubmit, onChange }) => {
         <div className="search-container">
             <form onSubmit={onSubmit}>
                 <input className="input-search" onChange={onChange} />
-                <button type="submit" className="searchButton">
+                <button type="submit" className="btn search">
                     Search
                 </button>
             </form>

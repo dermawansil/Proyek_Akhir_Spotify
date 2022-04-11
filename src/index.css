@@ -13,12 +13,19 @@ code {
     monospace;
 }
 
-h1 {
+h1, h2, h3, p, label {
   color: white;
 }
 
-p {
-  color: white;
+li {
+  list-style: none;
+}
+
+input {
+  padding: 12px 20px;
+  border-radius: 40px;
+  font-size: 16px;
+  width: 300px;
 }
 
 .home {
@@ -35,6 +42,7 @@ p {
 
 .container {
   border-radius: 10px;
+  padding: 10px 20px;
 }
 
 .container:hover {
@@ -42,7 +50,7 @@ p {
   color: white;
 }
 
-.selectButton {
+.btn {
   background-color: #1DB954; 
   border: none;
   color: white;
@@ -52,85 +60,65 @@ p {
   font-size: 14px;
   cursor: pointer;
   border-radius: 10px;
-  width: 150px;
-  margin-bottom: 10px;
+  margin-bottom: 10px; 
+  width: 100px; 
+  border-radius: 40px;
 }
 
-.imgContainer {
+.submit {
+  border-radius: 20px;
+  width: 150px;
+}
+
+.search {
+  margin: 30px 10px;
+}
+
+.selected {
+  background-color: #191414;
+  color: white;
+  opacity: 0.9;
+  border: white 1px solid;
+}
+
+.unselected {
+  background-color: #1DB954;
+  color: white;
+  opacity: 0.9;
+}
+
+.selected:hover, .unselected:hover {
+  opacity: 1.0;
+}
+
+.profile {
+  width: 100%;
+}
+
+.img {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+}
+
+.img-container {
   margin: 10px auto;
 }
 
-input {
-  padding: 10px;
-  border-radius: 40px;
-  font-size: 16px;
+.img-container img {
   width: 300px;
+  height: 300px;
+  border-radius: 10px;
 }
 
-.searchButton {
-  box-sizing: border-box;
-  background-color: #1DB954; 
-  border: none;
-  color: white;
-  padding: 15px;
-  margin: 0 auto;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 40px;
-  margin-left: 10px;
-}
-
-.unselectedButton {
-  color: white ;
-  background-color: #1DB954;
-  box-sizing: border-box;
-  border: none;
-  width: 120px;
-  padding: 15px;
-  margin: 20px auto;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 30px;
-  margin-left: 10px;
-  opacity: 0.9;
-}
-
-.selectedButton {
-  color: white ;
-  background-color: #191414;
-  box-sizing: border-box;
-  border: none;
-  width: 120px;
-  padding: 15px;
-  margin: 20px auto;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 30px;
-  margin-left: 10px;
-  opacity: 0.9;
-  border: 1px solid white;
-}
-
-.unselectedButton:hover {
-  opacity: 1
-}
-.selectedButton:hover {
-  opacity: 1
-}
-
-.addPlaylistForm input{
-  width: 300px;
-  padding: 12px 20px;
+.playlist-form input{
   margin: 15px 0;
   box-sizing: border-box;
   border: none;
-  color: white;
+  color: black;
 }
 
-.addPlaylistForm textarea {
+.playlist-form textarea {
   width: 300px;
   height: 150px;
   margin: 15px 0;
@@ -144,8 +132,7 @@ input {
   font-family: Arial, Helvetica, sans-serif
 }
 
-.playlist-form {
-  width: 500px;
-  margin: 20px auto;
-  color: white;
+.description .title {
+  font-size: 18px;
+  font-weight: bold;
 }

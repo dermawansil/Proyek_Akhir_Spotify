@@ -4,7 +4,7 @@ import axios from 'axios';
 import SearchBar from '../../components/SearchBar';
 import Tracks from '../../components/Track';
 import Playlist from '../../components/Playlist';
-
+import Profile from '../Profile';
 
 const MakePlaylist = () => {
     const [tracksData, setTracksData] = useState([]); // tracks data
@@ -12,6 +12,7 @@ const MakePlaylist = () => {
     const [selectedTracks, setSelectedTracks] = useState([]); // tracks that are selected
     const [mergedTracks, setMergedTracks] = useState([]); 
     const accessToken = useSelector((state) => state.accessToken.value); // get access token from redux store
+    const user_id = useSelector ((state) => state.user.value.user_id);
 
     useEffect(() => {
         const mergedTracksWithSelectedTracks // tracks with selected tracks
@@ -118,7 +119,7 @@ const MakePlaylist = () => {
     return (
         <>
             {/* <Profile /> */}
-            <h1>Homework - Spotify</h1>
+            <h1>Spotify</h1>
             <Playlist
                 handleAddPlaylistOnChange={handleAddPlaylistOnChange}
                 handleAddPlaylistOnSubmit={handleAddPlaylistOnSubmit}
