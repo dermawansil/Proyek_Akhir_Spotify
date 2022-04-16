@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import queryString from 'query-string';
 import Login from '../Login';
 import { setAccessToken } from "../../data/redux/accessTokenSlice"
+import { ChakraProvider, Text } from '@chakra-ui/react';
 
 const Home = () => {
   // const [accessToken, setAccessToken] = useState()
@@ -23,10 +24,13 @@ const Home = () => {
   }, [accessToken, history])
 
   return (
-    <div className="Home">
-      <h1>Welcome</h1>
+    <ChakraProvider>
+      <Text color= 'blue' font-style="italic" 
+      Welcome  ></Text>
+
       <Login />
-    </div>
+
+    </ChakraProvider>
   )
 }
 
