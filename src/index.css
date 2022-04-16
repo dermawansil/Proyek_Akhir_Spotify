@@ -28,14 +28,16 @@ input {
   width: 300px;
 }
 
-.home {
+.home, .Playlist {
   width: 90%;
   margin: 0 auto;
 }
 
+
+
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns:repeat(2,1fr);
   gap: 10px;
   padding: 10px;
 }
@@ -45,7 +47,7 @@ input {
   padding: 10px 20px;
 }
 
-.container:hover {
+.grid-item:hover {
   background-color: rgb(85, 83, 83);
   color: white;
 }
