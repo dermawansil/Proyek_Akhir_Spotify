@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
+import { useAppSelector, useAppDispatch } from '../../data/hooks';
 import queryString from 'query-string';
 import Login from '../Login';
 import { setAccessToken } from "../../data/redux/accessTokenSlice"
@@ -8,9 +8,9 @@ import { ChakraProvider, Text } from '@chakra-ui/react';
 
 const Home = () => {
   // const [accessToken, setAccessToken] = useState()
-  const accessToken = useSelector((state) => state.accessToken.value) 
-  const dispatch = useDispatch(); 
-  const history = useHistory(); 
+  const accessToken = useAppSelector((state: any) => state.accessToken.value) // get access token from redux store
+  const dispatch = useAppDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     const parsed = queryString.parse(window.location.hash); 
@@ -18,7 +18,7 @@ const Home = () => {
   }, [accessToken, dispatch])
 
   useEffect(() => {
-    accessToken !== undefined && (
+    accessToken !== undefined && ( 
       history.push("create-playlist") 
     )
   }, [accessToken, history])

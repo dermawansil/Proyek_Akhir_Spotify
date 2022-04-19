@@ -1,6 +1,6 @@
 const Login = () => {
     const clientID = process.env.REACT_APP_SPOTIFY_KEY;
-    const redirectURI = 'http://localhost:3000/';
+    const redirectURI = 'http://localhost:3000/redirect';
     const scope = 'playlist-modify-private';
 
     var url = 'https://accounts.spotify.com/authorize';

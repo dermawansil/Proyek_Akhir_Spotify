@@ -4,9 +4,8 @@ const Tracks = ({ mergedTracks, handleSelectTrack }) => {
   return mergedTracks.map((track) => {
     const { uri } = track;
     return (
-      <div className="container">
         <Container
-          key={uri}
+          key={track.id}
           uri={uri}
           imgSrc={track.album.images[1].url}
           title={track.name}
@@ -15,7 +14,6 @@ const Tracks = ({ mergedTracks, handleSelectTrack }) => {
           handleSelectTrack={handleSelectTrack} 
           isSelected={track.isSelected}      
         />
-      </div>
     )
   });
 }

@@ -1,3 +1,17 @@
+export type Tracks = {
+    imgSrc: string,
+    title:string,
+    artists: array<{
+        name:string,
+        id:string,
+    }>,
+
+    album:string,
+    uri:string,
+    handleSelectTrack: (uri:string) => void,
+    isSelected:boolean,
+}
+
 
 const Container = ({ imgSrc, title, artists, album, isSelected, handleSelectTrack, uri }) => {
     return (

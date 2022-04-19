@@ -6,7 +6,7 @@ export const userSlice = createSlice({
         value: {
             displayName: undefined,
             user_id: undefined,
-            imgSrc:undefined
+            imgSrc:"img_src",
         }
     },
     reducers: {

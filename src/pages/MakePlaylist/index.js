@@ -87,6 +87,7 @@ const MakePlaylist = () => {
             )
             .catch((error) => error)
         console.log("Playlist created: ", data);
+                selectedTracks.length > 0 &&
         handleAddItemToPlaylist(data.data.id);
     }
 
